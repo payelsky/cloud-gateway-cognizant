@@ -19,8 +19,8 @@ spring:  application:    name: CLOUD-GATEWAY
         filters:
          - name: CircuitBreaker
            args:
-              name: hcm-service
-              fallbackuri: forward:/hcmFallBack  
+              name: EMPLOYEE-SERVICE
+              fallbackuri: forward:/employeeFallBack  
         
       - id: hcm-service
         uri: lb://HCM-SERVICE

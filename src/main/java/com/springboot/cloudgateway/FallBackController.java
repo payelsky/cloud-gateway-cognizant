@@ -17,18 +17,32 @@ public class FallBackController {
 	
 	
 	
-	@RequestMapping("/hcmFallBack")
-	public List<EmployeeDetails> hcmFallBack(@RequestBody  List<Employee> emplist){
-		System.out.println("Hi::::::::::::::::::::::::::::::::::");
-		List<EmployeeDetails> empdetailslist=emplist.stream().map(emp->EmployeeDetails.build(emp.getEmployeeId(), emp.getName(), emp.getAge(), emp.getGender(), emp.getAddress(), emp.getIsActive(), "DOWN", "DOWN", "DOWN","DOWN"))
-                .collect(Collectors.toList());
-		
-		return empdetailslist;
-	}
+	/*
+	 * @RequestMapping("/hcmFallBack") public List<EmployeeDetails>
+	 * hcmFallBack(@RequestBody List<Employee> emplist){
+	 * System.out.println("Hi::::::::::::::::::::::::::::::::::");
+	 * List<EmployeeDetails>
+	 * empdetailslist=emplist.stream().map(emp->EmployeeDetails.build(emp.
+	 * getEmployeeId(), emp.getName(), emp.getAge(), emp.getGender(),
+	 * emp.getAddress(), emp.getIsActive(), "DOWN", "DOWN", "DOWN","DOWN"))
+	 * .collect(Collectors.toList());
+	 * 
+	 * return empdetailslist; }
+	 */
     
+	
+	@RequestMapping("/hcmFallBack")
+	public Mono<String> hcmFallBack(){
+	return Mono.just("Promotion Service is taking too long to respond or is down. Please try again later");	
+	}
+   
 	
 	@RequestMapping("/promotionFallBack")
 	public Mono<String> promotionFallBack(){
+	return Mono.just("Promotion Service is taking too long to respond or is down. Please try again later");	
+	}
+	@RequestMapping("/employeeFallBack")
+	public Mono<String> employeeFallBack(){
 	return Mono.just("Promotion Service is taking too long to respond or is down. Please try again later");	
 	}
 
